@@ -1,4 +1,4 @@
-# Functional assignment
+# Testing Assignment
 
 This assigment will introduce you to the pytest framework. We will 
 be implementing some tests for the [pydantic](https://docs.pydantic.dev/)
