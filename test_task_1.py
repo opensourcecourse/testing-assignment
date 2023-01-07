@@ -1,8 +1,4 @@
-"""
-First introduction to pytest.
-"""
-
-from models import Satellite
+"""First introduction to pytest."""
 
 BASE_DATA = {
     "id": 5,
@@ -21,15 +17,21 @@ class TestSatelliteInit:
 
     def test_base_case(self):
         """Ensure the base case is parsable."""
-        europa = Satellite(**BASE_DATA)
+        # You might start by loading in the base data like this
+        # (after importing models):
+        # europa = models.Satellite(**BASE_DATA)
+
         # Add some sensible asserts here
 
     def test_round_trip(self):
         """Ensure data can be round-tripped to/from dict."""
-        # Hint: Satellite.dict(by_alias=True)  generates output.
+        # Hint: Satellite.dict(by_alias=True) generates output.
 
     def test_missing_optional_fields(self):
-        """Ensure if the optional fields of Satellite (have default values)
+        """
+        Test optional data filled in.
+
+        Ensure if the optional fields of Satellite (have default values)
         are missing the data are still parsable.
         """
         # Hint: be sure to copy BASE_DATA before popping out optional keys.
@@ -41,9 +43,7 @@ class TestSatelliteInit:
 
 
 class TestSatelliteFieldTypes:
-    """
-    Tests for field type coercion.
-    """
+    """Tests for field type coercion."""
 
     def test_id_float(self):
         """Ensure when the id field is a float it is coerced to an int."""
@@ -52,11 +52,11 @@ class TestSatelliteFieldTypes:
         """Ensure when the id field is a string it is coerced to an int."""
 
     def test_string_radius_raises(self):
-        """Ensure a string radius (eg 'bob') raises a ValidationError"""
+        """Ensure a string radius (eg 'bob') raises a ValidationError."""
         # Hint: import ValidationError from pydantic and use pytest.raises
 
     def test_negative_albedo_raises(self):
-        """Ensure a negative albedo raises a ValidationError"""
+        """Ensure a negative albedo raises a ValidationError."""
 
     def test_many_radii(self, radius):
         """Test many different radius work for creating a Satellite object."""

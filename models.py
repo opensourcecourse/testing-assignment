@@ -1,6 +1,4 @@
-"""
-Pydantic Models for testing module.
-"""
+"""Pydantic Models for testing module."""
 from __future__ import annotations
 
 import json
@@ -11,6 +9,7 @@ from pydantic import BaseModel, Field
 
 
 def to_camel(snake_str):
+    """Function to convert snake_case to camelCase."""
     first, *others = snake_str.split("_")
     return "".join([first.lower(), *map(str.title, others)])
 
@@ -24,6 +23,8 @@ class CamelModel(BaseModel):
     """
 
     class Config:
+        """Configuration for model."""
+
         alias_generator = to_camel
         allow_population_by_field_name = True
 

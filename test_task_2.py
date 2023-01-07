@@ -1,8 +1,5 @@
-"""
-Task for learning pytest fixtures and marks.
-"""
+"""Task for learning pytest fixtures and marks."""
 import models
-from models import load_data
 
 # Hint: use load_data from models to, well, load the data. Note
 # that this function is cached.
@@ -13,32 +10,27 @@ UGLY_STATE = {"setup": False, "teardown": False}
 
 
 def planets():
-    """
-    A fixture which returns a list of planets once per session.
-    """
+    """A fixture which returns a list of planets once per session."""
     # Hint: Same as above, just return all the planets.
 
 
 def jupiter():
-    """
-    A fixture which returns a new instance of jupyter for each use.
-    """
+    """A fixture which returns a new instance of jupyter for each use."""
     # Hint: use the load data function in models, find jupyter, return
     # a copy. Ensure the scope parameter is set right in the fixture
     # decorator
 
 
 def satellite():
-    """
-    A parametrized fixture which returns each moon.
-    """
+    """A parametrized fixture which returns each moon."""
     # Hint: https://docs.pytest.org/en/6.2.x/fixture.html#parametrizing-fixtures
 
 
 def setup_teardown_fixture():
     """
-    A function scoped fixture which does setup and teardown. For setup
-    set UGLY_STATE['setup'] = True and for teardown set
+    A function scoped fixture which does setup and teardown.
+
+    For setup set UGLY_STATE['setup'] = True and for teardown set
     UGLY_STATE['setup'] = True. Yield 42 as the value for this fixture.
     """
 
@@ -57,8 +49,10 @@ class TestJupyterFixture:
     """Tests for the jupyter fixture."""
 
     def test_modify(self, jupiter):
-        """Test to modify jupyter, tests that a new jupyter is returned
-        each time or downstream tests will fail.
+        """
+        Tests that a new jupyter is returned each time.
+
+        If this is not the case, downstream tests will fail.
         """
         jupiter.name = "not_jupiter_any_more"
 

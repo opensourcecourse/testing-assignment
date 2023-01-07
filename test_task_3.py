@@ -1,9 +1,5 @@
-"""
-Task for learning pytest marks and a few command line arguments.
-"""
+"""Task for learning pytest marks and a few command line arguments."""
 import time
-
-import pytest
 
 
 def test_mark_xfail():
