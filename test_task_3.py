@@ -4,15 +4,15 @@ import time
 
 def test_mark_xfail():
     """Mark this test as expected to fail."""
-    assert 0
+    assert False
 
 
 def test_mark_skip():
     """Mark this test as skipped."""
-    assert 0
+    assert False
 
 
 def test_mark_long_running():
     """Apply a 'long_running' mark to this test."""
-    time.sleep(10)
+    time.sleep(5)
     assert 1

@@ -72,8 +72,12 @@ class Satellite(CamelModel):
 
 
 @cache
-def load_data(data_path):
+def load_data(data_path=None):
     """Load the data into pydantic models."""
+    # Get default data path in non specified.
+    if data_path is None:
+        data_path = Path(__file__).absolute().parent / "data"
+    # Load planet and satellite data
     planet_path = data_path / "planets.json"
     satellite_path = data_path / "satellites.json"
     with planet_path.open("r") as fi:
@@ -82,6 +86,7 @@ def load_data(data_path):
     with satellite_path.open("r") as fi:
         satellite_data = json.load(fi)
         satellites = [Satellite(**x) for x in satellite_data]
+    # Put planets into dict and connect satellites
     planet_dict = {x.id: x for x in planets}
     for satellite in satellites:
         planet_dict[satellite.planet_id].satellites.append(satellite)

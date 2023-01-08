@@ -1,24 +1,21 @@
 """Task for learning pytest fixtures and marks."""
 import models
 
-# Hint: use load_data from models to, well, load the data. Note
-# that this function is cached.
-
-
-# Mutable Global state is evil, don't try this at home
+# Mutable Global state is evil, don't try this at home.
 UGLY_STATE = {"setup": False, "teardown": False}
 
 
 def planets():
     """A fixture which returns a list of planets once per session."""
-    # Hint: Same as above, just return all the planets.
+    # Hint: use load_data from models to, well, load the data.
 
 
 def jupiter():
-    """A fixture which returns a new instance of jupyter for each use."""
-    # Hint: use the load data function in models, find jupyter, return
+    """A fixture which returns a new instance of jupiter for each use."""
+    # Hint: use the load data function in models, find jupiter, return
     # a copy. Ensure the scope parameter is set right in the fixture
-    # decorator
+    # decorator. You can use `deepcopy` from the copy module or the copy
+    # method on the Satellite instance.
 
 
 def satellite():
@@ -45,20 +42,20 @@ class TestPlanetsFixture:
             assert isinstance(planet, models.Planet)
 
 
-class TestJupyterFixture:
-    """Tests for the jupyter fixture."""
+class TestJupiterFixture:
+    """Tests for the jupiter fixture."""
 
     def test_modify(self, jupiter):
         """
-        Tests that a new jupyter is returned each time.
+        Tests that a new jupiter is returned each time.
 
         If this is not the case, downstream tests will fail.
         """
         jupiter.name = "not_jupiter_any_more"
 
-    def test_is_jupyter(self, jupyter):
-        """Ensure the fixture returns jupyter."""
-        assert jupyter.name == "jupiter"
+    def test_is_jupiter(self, jupiter):
+        """Ensure the fixture returns jupiter."""
+        assert jupiter.name.lower() == "jupiter"
 
 
 class TestSatelliteFixture:

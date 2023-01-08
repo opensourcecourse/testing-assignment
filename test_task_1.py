@@ -1,15 +1,23 @@
 """First introduction to pytest."""
+from types import MappingProxyType
 
-BASE_DATA = {
-    "id": 5,
-    "planetId": 5,
-    "name": "Europa",
-    "gm": 3202.739,
-    "radius": 1560.8,
-    "density": 3.013,
-    "magnitude": 5.29,
-    "albedo": 0.67,
-}
+# import models
+# import pydantic
+# import pytest
+
+# example data to create Europa Satellite
+BASE_DATA = MappingProxyType(
+    {
+        "id": 5,
+        "planetId": 5,
+        "name": "Europa",
+        "gm": 3202.739,
+        "radius": 1560.8,
+        "density": 3.013,
+        "magnitude": 5.29,
+        "albedo": 0.67,
+    }
+)
 
 
 class TestSatelliteInit:
@@ -18,7 +26,6 @@ class TestSatelliteInit:
     def test_base_case(self):
         """Ensure the base case is parsable."""
         # You might start by loading in the base data like this
-        # (after importing models):
         # europa = models.Satellite(**BASE_DATA)
 
         # Add some sensible asserts here
@@ -34,12 +41,14 @@ class TestSatelliteInit:
         Ensure if the optional fields of Satellite (have default values)
         are missing the data are still parsable.
         """
-        # Hint: be sure to copy BASE_DATA before popping out optional keys.
+        # Hint: be sure to copy BASE_DATA so you can modify them, like this:
+        # data = dict(BASE_DATA)  # then modify data as a normal dict.
 
     def test_read_from_file(self):
-        """Ensure data can be read from a file using Satellite.from_file."""
+        """Ensure data can be read from a file using Satellite.parse_file."""
         # Hint: First save the data to a json file using json module and
-        # pytest's tempfile https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html
+        # one of pytest's temp file fixtures:
+        # https://docs.pytest.org/en/7.1.x/how-to/tmp_path.html
 
 
 class TestSatelliteFieldTypes:
