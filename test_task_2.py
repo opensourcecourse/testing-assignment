@@ -19,7 +19,7 @@ def jupiter():
 
 
 def satellite():
-    """A parametrized fixture which returns each moon."""
+    """A parametrized fixture which returns each moon for all planets."""
     # Hint: https://docs.pytest.org/en/6.2.x/fixture.html#parametrizing-fixtures
 
 

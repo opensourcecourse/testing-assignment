@@ -32,6 +32,8 @@ class TestSatelliteInit:
 
     def test_round_trip(self):
         """Ensure data can be round-tripped to/from dict."""
+        # Here round-tripped means converted to and from a dict, and the two
+        # dicts are identical (check equality).
         # Hint: Satellite.dict(by_alias=True) generates output.
 
     def test_missing_optional_fields(self):
@@ -68,6 +70,6 @@ class TestSatelliteFieldTypes:
         """Ensure a negative albedo raises a ValidationError."""
 
     def test_many_radii(self, radius):
-        """Test many different radius work for creating a Satellite object."""
+        """Test many different radii work for creating a Satellite object."""
         # Hint: you need to parametrize this test with several values > 0.
         # see: https://docs.pytest.org/en/6.2.x/parametrize.html
